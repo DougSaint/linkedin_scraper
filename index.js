@@ -15,7 +15,7 @@ const ScrapperService = async () => {
   }, minutesToLinkedinScraper * 60000);
 };
 
-app.get("/linkedin-jobs", async (_req, res) => {
+app.get("/", async (_req, res) => {
   const jobs = scraper.linkedinJobs;
   return res.status(200).json(jobs);
 });
