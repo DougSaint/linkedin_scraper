@@ -66,7 +66,7 @@ class Scraper {
         }
         this.currentlyScrapingLinkedin = false;
         this.linkedinJobs = jobs_data;
-        console.log(`linkedin scraper finished with: ${jobs_data.length}`);
+        console.log(`linkedin scraper finished with: ${this.linkedinJobs.length}`);
       } catch (e) {
         console.log(e);
       }
