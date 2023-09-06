@@ -20,6 +20,11 @@ class Scraper {
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
         });
+
+        if(response.body.error) {
+          this.linkedinScraper();
+          return;
+        }
         const $ = cheerio.load(response.body);
 
         $(".job-search-card").each(async (i, el) => {
