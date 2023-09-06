@@ -7,7 +7,7 @@ app.use(cors());
 const scraper = new Scraper();
 
 const ScrapperService = async () => {
-  const minutesToLinkedinScraper = 5;
+  const minutesToLinkedinScraper = 1;
 
   await scraper.linkedinScraper();
 

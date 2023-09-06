@@ -1,5 +1,4 @@
 const cheerio = require("cheerio");
-const { response } = require("express");
 const unirest = require("unirest");
 
 class Scraper {
@@ -21,8 +20,7 @@ class Scraper {
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
         });
-        let $;
-        if (response.body) $ = cheerio.load(response.body);
+        const $ = cheerio.load(response.body);
 
         $(".job-search-card").each(async (i, el) => {
           jobs_data.push({
@@ -46,10 +44,7 @@ class Scraper {
           "User-Agent":
             "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
         });
-        let $2;
-
-        if (response.body) $2 = cheerio.load(response2.body);
-
+        const $2 = cheerio.load(response2.body);
         let level = $2("li.description__job-criteria-item:nth-child(1) span")
           .text()
           .trim();
@@ -69,13 +64,8 @@ class Scraper {
         jobs_data[j].level = level;
         jobs_data[j].type = type;
       }
-
       this.currentlyScrapingLinkedin = false;
-
-      if(jobs_data.length > 0){
-        this.linkedinJobs = jobs_data;
-      }
-
+      this.linkedinJobs = jobs_data;
       console.log(
         `linkedin scraper finished with: ${this.linkedinJobs.length}`
       );
