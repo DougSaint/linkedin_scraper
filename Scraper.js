@@ -27,7 +27,7 @@ class Scraper {
             jobs_data.push({
               title: $(el).find(".base-search-card__title").text()?.trim(),
               company: $(el).find("h4.base-search-card__subtitle").text()?.trim(),
-              link: $(el).find("a.base-card__full-link").attr("href")?.trim(),
+              applyLink: $(el).find("a.base-card__full-link").attr("href")?.trim(),
               id: $(el).attr("data-entity-urn")?.split("urn:li:jobPosting:")[1],
               location: $(el).find(".job-search-card__location").text()?.trim(),
               date: $(el).find(".job-search-card__listdate").text()?.trim(),
@@ -58,7 +58,7 @@ class Scraper {
             ?.replaceAll("</li>", "\n")
             ?.replaceAll("</ul>", "\n");
   
-          jobs_data[j].jobDescription = jobDescription;
+          jobs_data[j].description = jobDescription;
           jobs_data[j].level = level;
           jobs_data[j].type = type;
         }
