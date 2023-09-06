@@ -49,7 +49,7 @@ class Scraper {
         let $2;
 
         if (response.body) $2 = cheerio.load(response2.body);
-        
+
         let level = $2("li.description__job-criteria-item:nth-child(1) span")
           .text()
           .trim();
@@ -69,8 +69,13 @@ class Scraper {
         jobs_data[j].level = level;
         jobs_data[j].type = type;
       }
+
       this.currentlyScrapingLinkedin = false;
-      this.linkedinJobs = jobs_data;
+
+      if(jobs_data.length > 0){
+        this.linkedinJobs = jobs_data;
+      }
+
       console.log(
         `linkedin scraper finished with: ${this.linkedinJobs.length}`
       );
