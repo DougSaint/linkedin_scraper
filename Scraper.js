@@ -21,7 +21,6 @@ class Scraper {
             "User-Agent":
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
           });
-          console.log('fist load')
           const $ = cheerio.load(response.body);
   
           $(".job-search-card").each(async (i, el) => {
@@ -44,7 +43,6 @@ class Scraper {
               "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36",
           });
           const $2 = cheerio.load(response2.body);
-          console.log('second load')
           let level = $2("li.description__job-criteria-item:nth-child(1) span")
             .text()
             .trim();
