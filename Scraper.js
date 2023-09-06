@@ -5,11 +5,9 @@ class Scraper {
   linkedinJobs = [];
   currentlyScrapingLinkedin = false;
   linkedinKeyWord = "desenvolvedor";
-  currentlyScrapingLinkedin = false;
 
   linkedinScraper = async () => {
     if (this.currentlyScrapingLinkedin) return;
-    this.currentlyScrapingLinkedin = true;
     try {
       let range = 3;
       let pageNum = 0;
@@ -69,7 +67,6 @@ class Scraper {
         jobs_data[j].level = level;
         jobs_data[j].type = type;
       }
-      this.currentlyScrapingLinkedin = false;
       this.linkedinJobs = jobs_data;
       console.log(
         `linkedin scraper finished with: ${this.linkedinJobs.length}`
